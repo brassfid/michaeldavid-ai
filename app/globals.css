@@ -218,8 +218,8 @@ body {
 .project-step {
   width: 58%;
 }
-.project-step:nth-child(even) {
-  align-self: flex-end;
+.project-item:nth-child(even) .project-step {
+  margin-left: auto;
 }
 
 /* ── Scrollbar ──────────────────────────────────────── */
@@ -233,6 +233,6 @@ body {
   .s::before { left: 14px; width: 24px; }
   .s::after  { left: 8px; }
   .spine { left: 14px; }
-  .project-step { width: 100% !important; align-self: flex-start !important; }
+  .project-step { width: 100% !important; margin-left: 0 !important; }
   .side-shot { display: none; }
 }
