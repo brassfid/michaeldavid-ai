@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 const projects = [
   {
@@ -46,6 +46,9 @@ const MASK = [
 ].join('\n')
 
 export default function Home() {
+  const stackRef = useRef<HTMLDivElement>(null)
+
+  // Spotlight: track scroll center as a CSS var
   useEffect(() => {
     let ticking = false
     const update = () => {
@@ -67,6 +70,25 @@ export default function Home() {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
+  }, [])
+
+  // Reveal project cards as they enter the viewport
+  useEffect(() => {
+    const cards = stackRef.current?.querySelectorAll('.card')
+    if (!cards) return
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed')
+            obs.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.15 }
+    )
+    cards.forEach((c) => obs.observe(c))
+    return () => obs.disconnect()
   }, [])
 
   return (
@@ -152,7 +174,7 @@ export default function Home() {
           Four products.<br />Zero lines of code<br />written by hand.
         </h2>
 
-        <div className="project-stack">
+        <div className="project-stack" ref={stackRef}>
           {projects.map((p, i) => {
             const Tag = p.url ? 'a' : 'div'
             const linkProps = p.url
@@ -162,29 +184,26 @@ export default function Home() {
               <Tag
                 key={p.domain}
                 className={`card project-step${i % 2 === 1 ? ' project-step-right' : ''}`}
-                style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}
                 {...linkProps}
               >
-                {/* Faint screenshot ghost of each site */}
+                {/* Screenshot panel — loads in as card enters viewport */}
                 {p.url && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={`https://image.thum.io/get/width/600/crop/400/${p.url}`}
-                    alt=""
-                    aria-hidden
-                    loading="lazy"
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', opacity: 0.08, pointerEvents: 'none' }}
-                  />
+                  <div className="card-shot">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://image.thum.io/get/width/700/crop/440/${p.url}`}
+                      alt={`${p.domain} screenshot`}
+                      loading="lazy"
+                    />
+                  </div>
                 )}
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontFamily: 'var(--f-display)', fontSize: 17, fontWeight: 600, marginBottom: 8 }}>{p.domain}</div>
-                  <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 18 }}>{p.desc}</p>
-                  {p.status === 'live' ? (
-                    <span className="badge badge-live">Live</span>
-                  ) : (
-                    <span className="badge badge-wip">In Development</span>
-                  )}
-                </div>
+                <div style={{ fontFamily: 'var(--f-display)', fontSize: 17, fontWeight: 600, marginBottom: 8 }}>{p.domain}</div>
+                <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 18 }}>{p.desc}</p>
+                {p.status === 'live' ? (
+                  <span className="badge badge-live">Live</span>
+                ) : (
+                  <span className="badge badge-wip">In Development</span>
+                )}
               </Tag>
             )
           })}
