@@ -72,22 +72,23 @@ export default function Home() {
     }
   }, [])
 
-  // Reveal project cards as they enter the viewport
+  // Reveal side screenshots as each card enters / leaves the viewport
   useEffect(() => {
-    const cards = stackRef.current?.querySelectorAll('.card')
-    if (!cards) return
+    const items = stackRef.current?.querySelectorAll('.project-item')
+    if (!items) return
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add('revealed')
-            obs.unobserve(e.target)
+          } else {
+            e.target.classList.remove('revealed')
           }
         })
       },
-      { threshold: 0.15 }
+      { threshold: 0.2 }
     )
-    cards.forEach((c) => obs.observe(c))
+    items.forEach((c) => obs.observe(c))
     return () => obs.disconnect()
   }, [])
 
@@ -181,30 +182,30 @@ export default function Home() {
               ? { href: p.url, target: '_blank', rel: 'noopener noreferrer' }
               : {}
             return (
-              <Tag
-                key={p.domain}
-                className={`card project-step${i % 2 === 1 ? ' project-step-right' : ''}`}
-                {...linkProps}
-              >
-                {/* Screenshot panel — loads in as card enters viewport */}
+              <div key={p.domain} className="project-item">
+                <Tag
+                  className={`card project-step${i % 2 === 1 ? ' project-step-right' : ''}`}
+                  {...linkProps}
+                >
+                  <div style={{ fontFamily: 'var(--f-display)', fontSize: 17, fontWeight: 600, marginBottom: 8 }}>{p.domain}</div>
+                  <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 18 }}>{p.desc}</p>
+                  {p.status === 'live' ? (
+                    <span className="badge badge-live">Live</span>
+                  ) : (
+                    <span className="badge badge-wip">In Development</span>
+                  )}
+                </Tag>
                 {p.url && (
-                  <div className="card-shot">
+                  <div className={`side-shot side-shot-${i % 2 === 1 ? 'left' : 'right'}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`https://image.thum.io/get/width/700/crop/440/${p.url}`}
-                      alt={`${p.domain} screenshot`}
+                      alt={`${p.domain} preview`}
                       loading="lazy"
                     />
                   </div>
                 )}
-                <div style={{ fontFamily: 'var(--f-display)', fontSize: 17, fontWeight: 600, marginBottom: 8 }}>{p.domain}</div>
-                <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 18 }}>{p.desc}</p>
-                {p.status === 'live' ? (
-                  <span className="badge badge-live">Live</span>
-                ) : (
-                  <span className="badge badge-wip">In Development</span>
-                )}
-              </Tag>
+              </div>
             )
           })}
         </div>

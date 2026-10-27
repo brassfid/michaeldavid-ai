@@ -125,42 +125,60 @@ body {
 .card:hover { border-color: var(--lit); transform: translateY(-2px); }
 .card:hover::before { opacity: 1; }
 
-/* ── Screenshot panel ───────────────────────────────── */
+/* ── Side screenshots (float beside cards, appear/disappear on scroll) ── */
 
-.card-shot {
-  margin: -22px -22px 18px;
-  height: 190px;
+.project-item {
   position: relative;
-  overflow: hidden;
-  background: #080810;
 }
 
-/* Bottom fade so screenshot blends into card */
-.card-shot::after {
-  content: '';
+.side-shot {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 70px;
-  background: linear-gradient(transparent, var(--bg-card));
-  z-index: 1;
+  top: 50%;
+  width: calc(38% - 16px);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--bd);
+  background: #080810;
+  opacity: 0;
+  transition: opacity .7s ease, transform .7s ease;
   pointer-events: none;
 }
 
-.card-shot img {
+.side-shot::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(transparent, var(--bg));
+  pointer-events: none;
+}
+
+.side-shot img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
-  opacity: 0;
-  transform: scale(1.04) translateY(6px);
-  transition: opacity .75s ease, transform .75s ease;
 }
 
-/* Triggered by IntersectionObserver */
-.card.revealed .card-shot img {
+.side-shot-right {
+  right: 0;
+  transform: translateY(-50%) translateX(20px);
+}
+
+.side-shot-left {
+  left: 0;
+  transform: translateY(-50%) translateX(-20px);
+}
+
+.project-item.revealed .side-shot-right {
   opacity: .88;
-  transform: scale(1) translateY(0);
+  transform: translateY(-50%) translateX(0);
+}
+
+.project-item.revealed .side-shot-left {
+  opacity: .88;
+  transform: translateY(-50%) translateX(0);
 }
 
 /* ── Badges ─────────────────────────────────────────── */
@@ -216,4 +234,5 @@ body {
   .s::after  { left: 8px; }
   .spine { left: 14px; }
   .project-step { width: 100% !important; align-self: flex-start !important; }
+  .side-shot { display: none; }
 }
