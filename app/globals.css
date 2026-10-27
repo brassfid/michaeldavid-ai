@@ -3,12 +3,12 @@
   --bg-card:    #0d0d1c;
   --bd:         #191930;
   --fg:         #e2e2f0;
-  --muted:      #6868a0;
+  --muted:      #8888b4;
   --dim:        #26264a;
 
-  --trace:      #141428;
+  --trace:      rgba(255,255,255,.06);
   --lit:        #00d4ff;
-  --glow:       rgba(0, 212, 255, 0.4);
+  --glow:       rgba(0, 212, 255, 0.45);
   --glow-soft:  rgba(0, 212, 255, 0.12);
   --warm:       #ff8800;
 
@@ -30,70 +30,130 @@ body {
   line-height: 1.65;
 }
 
-/* ── Circuit spine ──────────────────────────────────── */
+/* ── Section grid: [circuit-l] [content] [circuit-r] ── */
 
-.spine {
-  position: absolute;
-  left: 28px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--trace);
-  z-index: 0;
+.s {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  align-items: stretch;
+  padding: 80px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.s-content {
+  min-width: 0;
+  padding: 0 24px;
+}
+
+/* Content powers on when section is lit */
+.s .s-content      { opacity: .56; transition: opacity .55s ease; }
+.s.lit .s-content  { opacity: 1; }
+
+/* Label lights up */
+.s.lit .s-label { color: var(--lit); }
+
+/* Heading glow when powered */
+.s.lit h2 { text-shadow: 0 0 48px rgba(0,212,255,.14); }
+
+/* ── Circuit columns ─────────────────────────────────── */
+
+.circ-l,
+.circ-r {
+  position: relative;
   pointer-events: none;
 }
 
-/* ── Section base ───────────────────────────────────── */
-
-.s {
-  position: relative;
-  z-index: 1;
-  padding: 80px 0 80px 76px;
-}
-
-/* Horizontal branch */
-.s::before {
+/* Vertical rail — runs full section height */
+.circ-l::before,
+.circ-r::before {
   content: '';
   position: absolute;
-  left: 28px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: var(--trace);
+  transition: background .55s, box-shadow .55s;
+}
+.circ-l::before { left: 20px; }
+.circ-r::before { right: 20px; }
+
+/* Horizontal branch — feeds power into the content */
+.circ-l::after,
+.circ-r::after {
+  content: '';
+  position: absolute;
   top: 50%;
-  width: 40px;
   height: 1px;
   background: var(--trace);
-  transition: background 0.5s, box-shadow 0.5s;
+  transition: background .55s, box-shadow .55s;
+}
+.circ-l::after { left: 20px; right: 0; }
+.circ-r::after { right: 20px; left: 0; }
+
+/* Diamond node at the rail-branch junction */
+.circ-node {
+  position: absolute;
+  top: 50%;
+  width: 10px; height: 10px;
+  margin-top: -5px;
+  transform: rotate(45deg);
+  background: var(--bg);
+  border: 1px solid rgba(255,255,255,.1);
+  transition: border-color .55s, background .55s, box-shadow .55s;
   z-index: 2;
 }
+.circ-l .circ-node { left: 15px; }
+.circ-r .circ-node { right: 15px; }
 
-/* Diamond node */
-.s::after {
-  content: '';
+/* Small decorative spurs — tick marks off the rail */
+.circ-spur {
   position: absolute;
-  left: 23px;
-  top: calc(50% - 5.5px);
-  width: 11px;
-  height: 11px;
-  border: 1px solid var(--dim);
-  background: var(--bg);
-  transform: rotate(45deg);
-  transition: border-color 0.5s, background 0.5s, box-shadow 0.5s;
-  z-index: 3;
+  height: 1px;
+  width: 13px;
+  background: rgba(255,255,255,.04);
+  transition: background .55s, box-shadow .55s;
 }
+.circ-l .circ-spur { left: 7px; }  /* right edge at x≈20 = rail */
+.circ-r .circ-spur { right: 7px; }
 
-/* Lit state */
-.s.lit::before {
-  background: var(--lit);
-  box-shadow: 0 0 10px var(--glow), 0 0 20px var(--glow-soft);
+/* Small square pads at spur ends */
+.circ-pad {
+  position: absolute;
+  width: 5px; height: 5px;
+  background: rgba(255,255,255,.06);
+  transition: background .55s, box-shadow .55s;
 }
-.s.lit::after {
+.circ-l .circ-pad { left: 5px; }
+.circ-r .circ-pad { right: 5px; }
+
+/* Vertical positions for spurs and pads */
+.circ-spur-a, .circ-pad-a { top: 27%; }
+.circ-pad-a { margin-top: -2px; }
+.circ-spur-b, .circ-pad-b { bottom: 27%; }
+.circ-pad-b { margin-bottom: -2px; }
+
+/* ── Lit state — full circuit glow ──────────────────── */
+
+.s.lit .circ-l::before,
+.s.lit .circ-r::before,
+.s.lit .circ-l::after,
+.s.lit .circ-r::after {
+  background: var(--lit);
+  box-shadow: 0 0 8px var(--glow), 0 0 22px var(--glow-soft);
+}
+.s.lit .circ-node {
+  background: var(--lit);
   border-color: var(--lit);
-  background: var(--lit);
-  box-shadow: 0 0 14px var(--glow), 0 0 28px var(--glow-soft);
+  box-shadow: 0 0 8px var(--glow), 0 0 22px var(--glow-soft);
 }
-.s.lit .s-label { color: var(--lit); }
-
-/* Hero node positioned lower */
-.hero-s::before { top: 52%; }
-.hero-s::after  { top: calc(52% - 5.5px); }
+.s.lit .circ-spur {
+  background: rgba(0,212,255,.45);
+  box-shadow: 0 0 6px var(--glow-soft);
+}
+.s.lit .circ-pad {
+  background: rgba(0,212,255,.55);
+  box-shadow: 0 0 4px var(--glow-soft);
+}
 
 /* ── Cards ──────────────────────────────────────────── */
 
@@ -112,7 +172,7 @@ body {
   top: 0; left: 0; right: 0;
   height: 2px;
   background: var(--trace);
-  transition: background 0.5s, box-shadow 0.5s;
+  transition: background 0.55s, box-shadow 0.55s;
 }
 
 .card::after {
@@ -146,8 +206,8 @@ body {
   display: inline-block;
 }
 
-.badge-live  { color: #00cc88; border-color: #00cc88; box-shadow: 0 0 6px rgba(0,204,136,.18); }
-.badge-wip   { color: var(--warm); border-color: var(--warm); }
+.badge-live { color: #00cc88; border-color: #00cc88; box-shadow: 0 0 6px rgba(0,204,136,.18); }
+.badge-wip  { color: var(--warm); border-color: var(--warm); }
 
 /* ── Process steps ──────────────────────────────────── */
 
@@ -168,8 +228,8 @@ body {
 /* ── Mobile ─────────────────────────────────────────── */
 
 @media (max-width: 580px) {
-  .spine { left: 18px; }
-  .s { padding-left: 52px; }
-  .s::before { left: 18px; width: 28px; }
-  .s::after  { left: 13px; }
+  .s { grid-template-columns: 0 1fr 0; padding: 64px 0; }
+  .circ-l, .circ-r { display: none; }
+  .s .s-content { opacity: 1 !important; }
+  .s.lit h2 { text-shadow: none; }
 }
