@@ -8,24 +8,28 @@ const projects = [
     desc: 'A daily dead-or-alive celebrity trivia game. Themed categories, funny titles, shareable results. New puzzle every day.',
     url: 'https://deadr.live',
     status: 'live' as const,
+    shotPos: 'top center',
   },
   {
     domain: 'full.link',
     desc: 'Professional services site for a Workday Financials CPA consulting firm. Custom visual identity, built to convert.',
     url: 'https://full.link',
     status: 'live' as const,
+    shotPos: 'left top',
   },
   {
     domain: 'meganbannon.com',
     desc: 'Personal website with a distinctive visual identity and clean typographic system for lasting professional presence.',
     url: 'https://meganbannon.com',
     status: 'live' as const,
+    shotPos: 'right top',
   },
   {
     domain: 'Kinbank',
     desc: "Family app for tracking kids' chores, allowances, points and savings goals. Multi-household, with parent and kid logins.",
     url: null,
     status: 'wip' as const,
+    shotPos: 'top center',
   },
 ]
 
@@ -202,6 +206,7 @@ export default function Home() {
                       src={`https://image.thum.io/get/width/700/crop/440/${p.url}`}
                       alt={`${p.domain} preview`}
                       loading="lazy"
+                      style={{ objectPosition: p.shotPos }}
                     />
                   </div>
                 )}

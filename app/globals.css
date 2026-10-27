@@ -163,12 +163,12 @@ body {
 
 .side-shot-right {
   right: 0;
-  transform: translateY(-50%) translateX(20px);
+  transform: translateY(-50%) translateX(70px);
 }
 
 .side-shot-left {
   left: 0;
-  transform: translateY(-50%) translateX(-20px);
+  transform: translateY(-50%) translateX(-70px);
 }
 
 .project-item.revealed .side-shot-right {
@@ -179,6 +179,25 @@ body {
 .project-item.revealed .side-shot-left {
   opacity: .88;
   transform: translateY(-50%) translateX(0);
+}
+
+/* Cards slide in from their side to meet the screenshot */
+.project-step {
+  opacity: 0;
+  transition: transform .7s ease, opacity .7s ease;
+}
+
+.project-item:nth-child(odd) .project-step {
+  transform: translateX(-70px);
+}
+
+.project-item:nth-child(even) .project-step {
+  transform: translateX(70px);
+}
+
+.project-item.revealed .project-step {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ── Badges ─────────────────────────────────────────── */

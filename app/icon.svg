@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="4" fill="#07070e"/>
-  <!-- D drawn first (behind), cyan, slightly larger -->
-  <text x="12" y="25" font-family="'Courier New',monospace" font-size="22" font-weight="900" fill="#00d4ff">D</text>
-  <!-- M drawn second (in front), white -->
-  <text x="2" y="24" font-family="'Courier New',monospace" font-size="20" font-weight="900" fill="#e2e2f0">M</text>
+  <text x="16" y="24" text-anchor="middle" font-family="'Courier New',monospace" font-size="30" font-weight="900" fill="#00d4ff">D</text>
+  <text x="16" y="24" text-anchor="middle" font-family="'Courier New',monospace" font-size="30" font-weight="900" fill="#e2e2f0">M</text>
 </svg>
