@@ -105,8 +105,7 @@ export default function Home() {
           style={{ fontFamily: 'var(--f-display)', fontSize: 'clamp(52px, 8.5vw, 94px)', fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.02em', marginBottom: 26, textWrap: 'balance' as never }}
         >
           Michael<br />
-          <span style={{ color: 'rgba(226,226,240,.22)' }}>David</span><br />
-          Brassfield
+          <span style={{ color: 'rgba(226,226,240,.22)' }}>David</span>
         </h1>
 
         <p style={{ maxWidth: 500, fontSize: 17, color: 'var(--muted)', marginBottom: 44, lineHeight: 1.7 }}>
