@@ -29,20 +29,19 @@ const projects = [
   },
 ]
 
-// Spotlight mask: only the middle ~20% of the viewport is fully bright.
-// Everything above and below fades to dark, like a light moving under paper.
+// Spotlight: middle ~36% of viewport fully bright, fades out above/below.
 const MASK = [
   'linear-gradient(to bottom,',
-  '  transparent              calc(var(--sc) - 48vh),',
-  '  rgba(0,0,0,.04)          calc(var(--sc) - 38vh),',
-  '  rgba(0,0,0,.32)          calc(var(--sc) - 24vh),',
-  '  rgba(0,0,0,.78)          calc(var(--sc) - 13vh),',
-  '  black                    calc(var(--sc) - 10vh),',
-  '  black                    calc(var(--sc) + 10vh),',
-  '  rgba(0,0,0,.78)          calc(var(--sc) + 13vh),',
-  '  rgba(0,0,0,.32)          calc(var(--sc) + 24vh),',
-  '  rgba(0,0,0,.04)          calc(var(--sc) + 38vh),',
-  '  transparent              calc(var(--sc) + 48vh)',
+  '  transparent              calc(var(--sc) - 56vh),',
+  '  rgba(0,0,0,.04)          calc(var(--sc) - 46vh),',
+  '  rgba(0,0,0,.22)          calc(var(--sc) - 32vh),',
+  '  rgba(0,0,0,.68)          calc(var(--sc) - 22vh),',
+  '  black                    calc(var(--sc) - 18vh),',
+  '  black                    calc(var(--sc) + 18vh),',
+  '  rgba(0,0,0,.68)          calc(var(--sc) + 22vh),',
+  '  rgba(0,0,0,.22)          calc(var(--sc) + 32vh),',
+  '  rgba(0,0,0,.04)          calc(var(--sc) + 46vh),',
+  '  transparent              calc(var(--sc) + 56vh)',
   ')',
 ].join('\n')
 
@@ -77,7 +76,7 @@ export default function Home() {
         margin: '0 auto',
         paddingLeft:  'max(16px, env(safe-area-inset-left,  0px))',
         paddingRight: 'max(16px, env(safe-area-inset-right, 0px))',
-        paddingBottom: 120,
+        paddingBottom: '55vh',
         position: 'relative',
         maskImage: MASK,
         WebkitMaskImage: MASK,
@@ -155,17 +154,41 @@ export default function Home() {
         </h2>
 
         <div className="project-stack">
-          {projects.map((p, i) => (
-            <div key={p.domain} className={`card project-step${i % 2 === 1 ? ' project-step-right' : ''}`}>
-              <div style={{ fontFamily: 'var(--f-display)', fontSize: 17, fontWeight: 600, marginBottom: 8 }}>{p.domain}</div>
-              <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 18 }}>{p.desc}</p>
-              {p.status === 'live' ? (
-                <span className="badge badge-live">Live</span>
-              ) : (
-                <span className="badge badge-wip">In Development</span>
-              )}
-            </div>
-          ))}
+          {projects.map((p, i) => {
+            const Tag = p.url ? 'a' : 'div'
+            const linkProps = p.url
+              ? { href: p.url, target: '_blank', rel: 'noopener noreferrer' }
+              : {}
+            return (
+              <Tag
+                key={p.domain}
+                className={`card project-step${i % 2 === 1 ? ' project-step-right' : ''}`}
+                style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}
+                {...linkProps}
+              >
+                {/* Faint screenshot ghost of each site */}
+                {p.url && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={`https://image.thum.io/get/width/600/crop/400/${p.url}`}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', opacity: 0.08, pointerEvents: 'none' }}
+                  />
+                )}
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <div style={{ fontFamily: 'var(--f-display)', fontSize: 17, fontWeight: 600, marginBottom: 8 }}>{p.domain}</div>
+                  <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 18 }}>{p.desc}</p>
+                  {p.status === 'live' ? (
+                    <span className="badge badge-live">Live</span>
+                  ) : (
+                    <span className="badge badge-wip">In Development</span>
+                  )}
+                </div>
+              </Tag>
+            )
+          })}
         </div>
       </section>
 
