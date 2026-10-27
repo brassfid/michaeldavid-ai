@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" font-family="'Courier New', monospace">
+  <rect width="700" height="440" fill="#0d0d1c"/>
+
+  <!-- Header bar -->
+  <rect width="700" height="62" fill="#080810"/>
+  <rect y="61" width="700" height="1" fill="#191930"/>
+  <text x="28" y="23" font-size="11" fill="#00d4ff" letter-spacing="4">KINBANK</text>
+  <text x="28" y="47" font-size="22" fill="#e2e2f0" font-weight="bold">Emma's Account</text>
+  <text x="672" y="23" text-anchor="end" font-size="11" fill="#8888b4" letter-spacing="2">BALANCE</text>
+  <text x="672" y="47" text-anchor="end" font-size="26" fill="#00d4ff" font-weight="bold">$12.50</text>
+
+  <!-- Savings progress -->
+  <text x="28" y="86" font-size="15" fill="#8888b4">Savings goal — New Bike</text>
+  <text x="672" y="86" text-anchor="end" font-size="15" fill="#8888b4">$12.50 / $50.00</text>
+  <rect x="28" y="95" width="644" height="7" rx="3" fill="#191930"/>
+  <rect x="28" y="95" width="161" height="7" rx="3" fill="#00d4ff" opacity=".65"/>
+
+  <!-- Divider + section label -->
+  <rect x="28" y="120" width="644" height="1" fill="#191930"/>
+  <text x="28" y="144" font-size="12" fill="#8888b4" letter-spacing="3">CHORES THIS WEEK</text>
+
+  <!-- Chore 1 — done -->
+  <rect x="28" y="154" width="644" height="54" rx="3" fill="#080810" stroke="#191930" stroke-width="1"/>
+  <rect x="28" y="154" width="3" height="54" fill="#00cc88" opacity=".7"/>
+  <text x="50" y="177" font-size="20" fill="#00cc88">&#x2713;</text>
+  <text x="76" y="177" font-size="21" fill="#e2e2f0">Take out trash</text>
+  <text x="76" y="198" font-size="15" fill="#8888b4">Completed Monday</text>
+  <text x="622" y="177" text-anchor="end" font-size="20" fill="#00cc88" font-weight="bold">+10 pts</text>
+  <text x="672" y="177" text-anchor="end" font-size="20" fill="#8888b4">$0.50</text>
+  <text x="672" y="198" text-anchor="end" font-size="14" fill="#00cc88">earned</text>
+
+  <!-- Chore 2 — done -->
+  <rect x="28" y="216" width="644" height="54" rx="3" fill="#080810" stroke="#191930" stroke-width="1"/>
+  <rect x="28" y="216" width="3" height="54" fill="#00cc88" opacity=".7"/>
+  <text x="50" y="239" font-size="20" fill="#00cc88">&#x2713;</text>
+  <text x="76" y="239" font-size="21" fill="#e2e2f0">Wash dishes</text>
+  <text x="76" y="260" font-size="15" fill="#8888b4">Completed Tuesday</text>
+  <text x="622" y="239" text-anchor="end" font-size="20" fill="#00cc88" font-weight="bold">+15 pts</text>
+  <text x="672" y="239" text-anchor="end" font-size="20" fill="#8888b4">$0.75</text>
+  <text x="672" y="260" text-anchor="end" font-size="14" fill="#00cc88">earned</text>
+
+  <!-- Chore 3 — pending -->
+  <rect x="28" y="278" width="644" height="54" rx="3" fill="#080810" stroke="#191930" stroke-width="1"/>
+  <rect x="28" y="278" width="3" height="54" fill="#ff8800" opacity=".5"/>
+  <circle cx="51" cy="305" r="9" fill="none" stroke="#ff8800" stroke-width="1.5" opacity=".6"/>
+  <text x="76" y="301" font-size="21" fill="#e2e2f0">Clean bedroom</text>
+  <text x="76" y="322" font-size="15" fill="#8888b4">Due Friday</text>
+  <text x="622" y="301" text-anchor="end" font-size="20" fill="#ff8800" font-weight="bold">+20 pts</text>
+  <text x="672" y="301" text-anchor="end" font-size="20" fill="#8888b4">$1.00</text>
+  <text x="672" y="322" text-anchor="end" font-size="14" fill="#ff8800">pending</text>
+
+  <!-- Bottom stats bar -->
+  <rect y="350" width="700" height="90" fill="#080810"/>
+  <rect y="350" width="700" height="1" fill="#191930"/>
+
+  <text x="116" y="381" text-anchor="middle" font-size="13" fill="#8888b4" letter-spacing="2">POINTS</text>
+  <text x="116" y="412" text-anchor="middle" font-size="34" fill="#e2e2f0" font-weight="bold">340</text>
+  <text x="116" y="432" text-anchor="middle" font-size="13" fill="#8888b4">this week</text>
+
+  <rect x="233" y="366" width="1" height="58" fill="#191930"/>
+
+  <text x="350" y="381" text-anchor="middle" font-size="13" fill="#8888b4" letter-spacing="2">NEXT PAYOUT</text>
+  <text x="350" y="412" text-anchor="middle" font-size="34" fill="#e2e2f0" font-weight="bold">$2.25</text>
+  <text x="350" y="432" text-anchor="middle" font-size="13" fill="#8888b4">Friday</text>
+
+  <rect x="467" y="366" width="1" height="58" fill="#191930"/>
+
+  <text x="584" y="381" text-anchor="middle" font-size="13" fill="#8888b4" letter-spacing="2">ALL TIME</text>
+  <text x="584" y="412" text-anchor="middle" font-size="34" fill="#00d4ff" font-weight="bold">$48.50</text>
+  <text x="584" y="432" text-anchor="middle" font-size="13" fill="#8888b4">earned</text>
+</svg>

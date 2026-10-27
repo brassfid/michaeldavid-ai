@@ -9,6 +9,7 @@ const projects = [
     url: 'https://deadr.live',
     status: 'live' as const,
     shotPos: 'top center',
+    localShot: null as string | null,
   },
   {
     domain: 'full.link',
@@ -16,6 +17,7 @@ const projects = [
     url: 'https://full.link',
     status: 'live' as const,
     shotPos: 'left top',
+    localShot: null as string | null,
   },
   {
     domain: 'meganbannon.com',
@@ -23,6 +25,7 @@ const projects = [
     url: 'https://meganbannon.com',
     status: 'live' as const,
     shotPos: 'right top',
+    localShot: null as string | null,
   },
   {
     domain: 'Kinbank',
@@ -30,6 +33,15 @@ const projects = [
     url: null,
     status: 'wip' as const,
     shotPos: 'top center',
+    localShot: '/kinbank-flow.svg' as string | null,
+  },
+  {
+    domain: 'FriscoPTSA',
+    desc: 'Real-time silent auction platform for school fundraisers. Live bidding, item tracking, and instant totals — all in the browser.',
+    url: null,
+    status: 'wip' as const,
+    shotPos: 'top center',
+    localShot: '/friscoptsa-flow.svg' as string | null,
   },
 ]
 
@@ -176,7 +188,7 @@ export default function Home() {
       <section className="s">
         <p className="s-label">Work</p>
         <h2 style={{ fontFamily: 'var(--f-display)', fontSize: 'clamp(26px, 3.8vw, 40px)', fontWeight: 700, lineHeight: 1.1, textWrap: 'balance' as never }}>
-          Four products.<br />Zero lines of code<br />written by hand.
+          Five projects.<br />Zero lines of code<br />written by hand.
         </h2>
 
         <div className="project-stack" ref={stackRef}>
@@ -199,11 +211,11 @@ export default function Home() {
                     <span className="badge badge-wip">In Development</span>
                   )}
                 </Tag>
-                {p.url && (
+                {(p.url || p.localShot) && (
                   <div className={`side-shot side-shot-${i % 2 === 1 ? 'left' : 'right'}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`https://image.thum.io/get/width/700/crop/440/${p.url}`}
+                      src={p.localShot ?? `https://image.thum.io/get/width/700/crop/440/${p.url}`}
                       alt={`${p.domain} preview`}
                       loading="lazy"
                       style={{ objectPosition: p.shotPos }}

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" font-family="'Courier New', monospace">
+  <rect width="700" height="440" fill="#0d0d1c"/>
+
+  <!-- Header bar -->
+  <rect width="700" height="62" fill="#080810"/>
+  <rect y="61" width="700" height="1" fill="#191930"/>
+  <text x="28" y="23" font-size="11" fill="#00d4ff" letter-spacing="4">FRISCO PTSA</text>
+  <text x="28" y="47" font-size="22" fill="#e2e2f0" font-weight="bold">Silent Auction 2025</text>
+  <text x="672" y="23" text-anchor="end" font-size="11" fill="#8888b4" letter-spacing="2">ITEMS</text>
+  <text x="672" y="47" text-anchor="end" font-size="26" fill="#e2e2f0" font-weight="bold">42</text>
+
+  <!-- Item image placeholder -->
+  <rect x="28" y="78" width="176" height="176" rx="3" fill="#080810" stroke="#191930" stroke-width="1"/>
+  <!-- Placeholder graphic -->
+  <rect x="60" y="120" width="112" height="70" rx="2" fill="#191930"/>
+  <circle cx="116" cy="147" r="18" fill="#26264a"/>
+  <text x="116" y="186" text-anchor="middle" font-size="14" fill="#8888b4">Peloton Bike+</text>
+
+  <!-- Item details (right of image) -->
+  <text x="222" y="97" font-size="14" fill="#8888b4" letter-spacing="2">LOT 07</text>
+  <text x="222" y="122" font-size="24" fill="#e2e2f0" font-weight="bold">Peloton Bike+</text>
+  <text x="222" y="144" font-size="16" fill="#8888b4">1-year membership included</text>
+
+  <!-- Current bid -->
+  <text x="222" y="174" font-size="14" fill="#8888b4" letter-spacing="2">CURRENT BID</text>
+  <text x="222" y="204" font-size="38" fill="#00d4ff" font-weight="bold">$350</text>
+  <text x="386" y="204" font-size="18" fill="#8888b4">8 bids</text>
+
+  <!-- Timer -->
+  <text x="222" y="228" font-size="14" fill="#8888b4" letter-spacing="2">CLOSES IN</text>
+  <text x="222" y="252" font-size="30" fill="#ff8800" font-weight="bold">01:42:18</text>
+
+  <!-- Divider -->
+  <rect x="28" y="266" width="644" height="1" fill="#191930"/>
+
+  <!-- Bid button -->
+  <rect x="424" y="78" width="248" height="50" rx="3" fill="none" stroke="#00d4ff" stroke-width="1"/>
+  <text x="548" y="108" text-anchor="middle" font-size="18" fill="#00d4ff" letter-spacing="2">PLACE BID</text>
+
+  <!-- Reserve met badge -->
+  <rect x="424" y="140" width="248" height="32" rx="3" fill="#00cc88" opacity=".12"/>
+  <rect x="424" y="140" width="248" height="32" rx="3" fill="none" stroke="#00cc88" stroke-width="1" opacity=".4"/>
+  <text x="548" y="161" text-anchor="middle" font-size="14" fill="#00cc88">&#x2713; Reserve price met</text>
+
+  <!-- Section label -->
+  <text x="28" y="292" font-size="12" fill="#8888b4" letter-spacing="3">RECENT BIDS</text>
+
+  <!-- Bid 1 -->
+  <rect x="28" y="302" width="644" height="36" rx="2" fill="#080810" stroke="#191930" stroke-width="1"/>
+  <text x="44" y="325" font-size="17" fill="#e2e2f0">jsmith22</text>
+  <text x="220" y="325" font-size="17" fill="#00d4ff" font-weight="bold">$350</text>
+  <text x="672" y="325" text-anchor="end" font-size="15" fill="#8888b4">2 min ago</text>
+
+  <!-- Bid 2 -->
+  <rect x="28" y="344" width="644" height="36" rx="2" fill="#080810" stroke="#191930" stroke-width="1"/>
+  <text x="44" y="367" font-size="17" fill="#8888b4">mwilson</text>
+  <text x="220" y="367" font-size="17" fill="#8888b4">$300</text>
+  <text x="672" y="367" text-anchor="end" font-size="15" fill="#8888b4">14 min ago</text>
+
+  <!-- Bottom stats bar -->
+  <rect y="392" width="700" height="48" fill="#080810"/>
+  <rect y="392" width="700" height="1" fill="#191930"/>
+  <text x="116" y="422" text-anchor="middle" font-size="14" fill="#8888b4">TOTAL RAISED</text>
+  <rect x="233" y="400" width="1" height="32" fill="#191930"/>
+  <text x="350" y="422" text-anchor="middle" font-size="14" fill="#8888b4">BIDS PLACED</text>
+  <rect x="467" y="400" width="1" height="32" fill="#191930"/>
+  <text x="584" y="422" text-anchor="middle" font-size="14" fill="#8888b4">ITEMS SOLD</text>
+
+  <rect y="428" width="700" height="12" fill="#080810"/>
+  <text x="116" y="412" text-anchor="middle" font-size="20" fill="#e2e2f0" font-weight="bold">$4,820</text>
+  <text x="350" y="412" text-anchor="middle" font-size="20" fill="#e2e2f0" font-weight="bold">183</text>
+  <text x="584" y="412" text-anchor="middle" font-size="20" fill="#00d4ff" font-weight="bold">17 / 42</text>
+</svg>
