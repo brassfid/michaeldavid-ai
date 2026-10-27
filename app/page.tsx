@@ -191,8 +191,8 @@ export default function Home() {
                   className={`card project-step${i % 2 === 1 ? ' project-step-right' : ''}`}
                   {...linkProps}
                 >
-                  <div style={{ fontFamily: 'var(--f-display)', fontSize: 17, fontWeight: 600, marginBottom: 8 }}>{p.domain}</div>
-                  <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 18 }}>{p.desc}</p>
+                  <div style={{ fontFamily: 'var(--f-display)', fontSize: 21, fontWeight: 600, marginBottom: 10 }}>{p.domain}</div>
+                  <p style={{ fontSize: 15, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 22 }}>{p.desc}</p>
                   {p.status === 'live' ? (
                     <span className="badge badge-live">Live</span>
                   ) : (

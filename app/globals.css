@@ -91,7 +91,7 @@ body {
 .card {
   background: var(--bg-card);
   border: 1px solid var(--bd);
-  padding: 22px 22px 20px;
+  padding: 28px 28px 24px;
   position: relative;
   overflow: hidden;
   transition: border-color .25s, transform .2s;
@@ -134,8 +134,8 @@ body {
 .side-shot {
   position: absolute;
   top: 50%;
-  width: calc(38% - 16px);
-  aspect-ratio: 16 / 10;
+  width: calc(42% - 10px);
+  aspect-ratio: 16 / 11;
   overflow: hidden;
   border: 1px solid var(--bd);
   background: #080810;
@@ -163,12 +163,12 @@ body {
 
 .side-shot-right {
   right: 0;
-  transform: translateY(-50%) translateX(70px);
+  transform: translateY(-50%) translateX(160px);
 }
 
 .side-shot-left {
   left: 0;
-  transform: translateY(-50%) translateX(-70px);
+  transform: translateY(-50%) translateX(-160px);
 }
 
 .project-item.revealed .side-shot-right {
@@ -188,11 +188,11 @@ body {
 }
 
 .project-item:nth-child(odd) .project-step {
-  transform: translateX(-70px);
+  transform: translateX(-160px);
 }
 
 .project-item:nth-child(even) .project-step {
-  transform: translateX(70px);
+  transform: translateX(160px);
 }
 
 .project-item.revealed .project-step {
@@ -230,8 +230,8 @@ body {
 .project-stack {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  margin-top: 40px;
+  gap: 64px;
+  margin-top: 52px;
 }
 
 .project-step {
