@@ -15,17 +15,17 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Michael David Brassfield',
+  title: 'Michael David',
   description: 'I build digital products with AI — and the understanding that people actually have to want to use them.',
   openGraph: {
-    title: 'Michael David Brassfield',
+    title: 'Michael David',
     description: 'I build digital products with AI — and the understanding that people actually have to want to use them.',
     url: 'https://michaeldavid.ai',
-    siteName: 'Michael David Brassfield',
+    siteName: 'Michael David',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Michael David Brassfield',
+    title: 'Michael David',
     description: 'I build digital products with AI — and the understanding that people actually have to want to use them.',
   },
 }
