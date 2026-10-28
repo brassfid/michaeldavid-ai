@@ -100,14 +100,20 @@ function ContactForm() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setState('sending')
-    const data = Object.fromEntries(new FormData(e.currentTarget))
+    const body = new URLSearchParams(new FormData(e.currentTarget) as unknown as Record<string, string>)
+    body.set('_subject', 'New project inquiry — michaeldavid.ai')
+    body.set('_template', 'table')
+    // Form-encoded body keeps this a "simple" CORS request (no slow preflight);
+    // the timeout stops the button hanging if FormSubmit never answers.
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...data, _subject: 'New project inquiry — michaeldavid.ai', _template: 'table' }),
+        headers: { Accept: 'application/json' },
+        body,
+        signal: AbortSignal.timeout(20000),
       })
-      setState(res.ok ? 'sent' : 'error')
+      const json = await res.json().catch(() => null)
+      setState(res.ok && json?.success !== 'false' && json?.success !== false ? 'sent' : 'error')
     } catch {
       setState('error')
     }
