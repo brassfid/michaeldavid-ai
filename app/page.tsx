@@ -141,14 +141,14 @@ export default function Home() {
         </p>
 
         <h1
-          style={{ fontFamily: 'var(--f-display)', fontSize: 'clamp(52px, 8.5vw, 94px)', fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.02em', marginBottom: 26, textWrap: 'balance' as never }}
+          style={{ fontFamily: 'var(--f-display)', fontSize: 'clamp(52px, 8.5vw, 94px)', fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.02em', marginBottom: 26 }}
         >
-          Michael<br />
-          <span style={{ color: 'rgba(226,226,240,.22)' }}>David</span>
+          Mich<span style={{ color: '#5ab8d4' }}>a</span>el<br />
+          <span style={{ color: 'rgba(226,226,240,.22)', display: 'inline-block', marginLeft: '0.62em' }}>Dav<span style={{ color: '#5ab8d4' }}>i</span>d</span>
         </h1>
 
         <p style={{ maxWidth: 500, fontSize: 17, color: 'var(--muted)', marginBottom: 44, lineHeight: 1.7 }}>
-          I build digital products with AI — and the understanding that people actually have to want to use them.
+          We build digital products with AI — and the understanding that people actually have to want to use them.
         </p>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: 'var(--f-display)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,.2)' }}>
@@ -164,13 +164,13 @@ export default function Home() {
           AI as collaborator,<br />not replacement
         </h2>
         <p style={{ maxWidth: 540, color: 'var(--muted)', fontSize: 15, lineHeight: 1.78 }}>
-          No coding background. What I have is an understanding of what makes people actually engage with something — what&apos;s fun, what&apos;s useful, what brings them back. I pair that with Claude AI as my technical partner. The result is products that work, and that people want to use.
+          No coding background. What we have is an understanding of what makes people actually engage with something — what&apos;s fun, what&apos;s useful, what brings them back. Human instinct paired with Claude AI as the technical engine. The result is products that work, and that people want to use.
         </p>
 
         <div style={{ marginTop: 36 }}>
           {[
             { n: '01', title: 'Human first',        body: "Every project starts with one question: what would make a person actually enjoy this? Not what's technically possible — what's genuinely worth building." },
-            { n: '02', title: 'AI as the engine',    body: 'Claude handles the code. I direct the architecture, the logic, the experience. We iterate in days, not months.' },
+            { n: '02', title: 'AI as the engine',    body: 'Claude handles the code. We direct the architecture, the logic, the experience. Iterating in days, not months.' },
             { n: '03', title: 'Real products, shipped', body: 'Everything here is live, functional, and used by real people. Not prototypes — working software.' },
           ].map((step) => (
             <div key={step.n} className="step">
@@ -235,7 +235,7 @@ export default function Home() {
           Got an idea?
         </h2>
         <p style={{ maxWidth: 540, color: 'var(--muted)', fontSize: 15, lineHeight: 1.78, marginBottom: 28 }}>
-          If you have something you want to build, I&apos;m always up for a conversation.
+          If you have something you want to build, we&apos;re always up for a conversation.
         </p>
         <a
           href="mailto:hello@michaeldavid.ai"
