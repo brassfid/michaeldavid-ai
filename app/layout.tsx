@@ -14,19 +14,24 @@ const dmSans = DM_Sans({
   weight: ['300', '400', '500'],
 })
 
+const title = 'Michael David — AI-built web apps & sites'
+const description = 'I build web apps, sites and games with AI — and the understanding that people actually have to want to use them.'
+
 export const metadata: Metadata = {
-  title: 'Michael David',
-  description: 'I build digital products with AI — and the understanding that people actually have to want to use them.',
+  metadataBase: new URL('https://michaeldavid.ai'),
+  title,
+  description,
   openGraph: {
-    title: 'Michael David',
-    description: 'I build digital products with AI — and the understanding that people actually have to want to use them.',
+    title,
+    description,
     url: 'https://michaeldavid.ai',
     siteName: 'Michael David',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Michael David',
-    description: 'I build digital products with AI — and the understanding that people actually have to want to use them.',
+    title,
+    description,
   },
 }
 
