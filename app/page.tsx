@@ -3,9 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 
 const EMAIL = 'hello@michaeldavid.ai'
-// FormSubmit relays submissions to EMAIL. The first submission sends a one-time
-// activation email to that inbox; nothing is delivered until it's confirmed.
-const FORM_ENDPOINT = `https://formsubmit.co/ajax/${EMAIL}`
 // Photo in /public for the About section; set to null to show the MD monogram.
 const PHOTO: string | null = '/michael.png'
 
@@ -100,20 +97,17 @@ function ContactForm() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setState('sending')
-    const body = new URLSearchParams(new FormData(e.currentTarget) as unknown as Record<string, string>)
-    body.set('_subject', 'New project inquiry — michaeldavid.ai')
-    body.set('_template', 'table')
-    // Form-encoded body keeps this a "simple" CORS request (no slow preflight);
-    // the timeout stops the button hanging if FormSubmit never answers.
+    const data = Object.fromEntries(new FormData(e.currentTarget))
+    // Sent by our own /api/contact route (Resend). The timeout stops the button
+    // hanging if the request never answers; the error state shows EMAIL instead.
     try {
-      const res = await fetch(FORM_ENDPOINT, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body,
-        signal: AbortSignal.timeout(20000),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        signal: AbortSignal.timeout(15000),
       })
-      const json = await res.json().catch(() => null)
-      setState(res.ok && json?.success !== 'false' && json?.success !== false ? 'sent' : 'error')
+      setState(res.ok ? 'sent' : 'error')
     } catch {
       setState('error')
     }
