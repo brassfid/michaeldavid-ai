@@ -167,7 +167,9 @@ body {
   margin-top: 36px;
 }
 .offer { padding: 24px; }
-.offer:hover { transform: none; }
+/* Offers aren't links — no hover glow */
+.card.offer:hover { transform: none; border-color: var(--bd); }
+.card.offer:hover::before { opacity: .22; }
 
 /* ── About ──────────────────────────────────────────── */
 
